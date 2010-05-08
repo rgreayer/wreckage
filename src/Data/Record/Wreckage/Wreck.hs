@@ -18,7 +18,6 @@ module Data.Record.Wreckage.Wreck(
 
 import Data.Record.Wreckage.ProductSort
 import Control.Monad
-import Control.Monad.Identity
 import Data.Record.Wreckage.Bool
 import Data.Record.Wreckage.Alphabet
 import Data.Record.Wreckage.Nat
