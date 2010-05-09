@@ -22,10 +22,11 @@ wreck [d|
             height :: Int
             }
           |]
-
+{-
 r1 = mkRec1 (ℓw =: 1 :* ℓx =: 2 :* ℓy =: "r1" :* ())
 
 r1' = mkRec1 (ℓw =: 2 :* ℓy =: "r1" :* ())
+
 r3 = mkRec3 (ℓweight =: 1 :* ℓname =: "x" :* ℓheight =: 2 :* ())
 
 r2 = mkRec2 (ℓx =: r1 :* ℓy =: 2 :* ℓz =: "r2" :* ())
@@ -42,3 +43,4 @@ rxer1 = er1 `restrict` ℓf
 
 look (get (ℓx:*ℓy) -> (x:*y)) = show y ++ show x
 r1ish r@(get ℓx -> x) = (r,x)
+-}
