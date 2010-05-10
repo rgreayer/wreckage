@@ -1,1 +1,5 @@
-This is the wreckage project!
+This is the wreckage project
+
+The directory 'wreckage' contains the (cabalized) wreckage library.
+
+The directory 'wreckage-samples' contains sample code using the wreckage library.
