@@ -1,0 +1,5 @@
+*~
+wreckage/dist/
+wreckage-samples/dist/
+*.o
+*.hi

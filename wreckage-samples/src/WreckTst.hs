@@ -1,20 +1,34 @@
 {-# LANGUAGE TemplateHaskell, TypeFamilies, TypeOperators, FlexibleInstances,
              MultiParamTypeClasses, QuasiQuotes, ViewPatterns #-}
-module Data.Record.Wreckage.WreckTst where
+module WreckTst where
 
 import Data.Record.Wreckage.Wreck
+import Data.Record.Wreckage.Nat
 import Language.Haskell.TH
 
+
+{-
+data Rec1 = Rec1 !Int
+mkRec1 v = mk $ merge ({-sort $ -} {-tag (undefined :: Rec1)-} v) () --(defaults (undefined :: Rec1))
+    where mk :: (Tagged a Int :* ()) -> Rec1
+          mk (Tagged i :* ()) = Rec1 i
+
+instance ADTWreck Rec1 where
+    type ADTWreckDefaultsType Rec1 = ()
+    type ADTWreckSelectorsType Rec1 = Selector (C119:*()) :* ()
+    defaults = const ()
+
+instance Selection Rec1 (Selector (C119:*())) where
+    type SelectorIndex Rec1 (Selector (C119:*())) = Zero
+-}
 wreck [d|data Rec1 = Rec1 {
-    w :: !Int,
+    w :: !Int } |] -}
     x :: Double,
     y :: String } deriving (Show)|]
-
 wreck [d|data Rec2 = Rec2 {
     x :: Rec1,
     y :: Int,
     z :: String } deriving (Show)|]
-
 wreck [d|
         data Rec3 = Rec3 {
             name :: String,
@@ -22,7 +36,6 @@ wreck [d|
             height :: Int
             }
           |]
-{-
 r1 = mkRec1 (ℓw =: 1 :* ℓx =: 2 :* ℓy =: "r1" :* ())
 
 r1' = mkRec1 (ℓw =: 2 :* ℓy =: "r1" :* ())
@@ -43,4 +56,4 @@ rxer1 = er1 `restrict` ℓf
 
 look (get (ℓx:*ℓy) -> (x:*y)) = show y ++ show x
 r1ish r@(get ℓx -> x) = (r,x)
--}
+

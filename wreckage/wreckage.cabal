@@ -27,7 +27,7 @@ Cabal-version:       >=1.2
 
 Library
   -- Modules exported by the library.
-  Exposed-modules: Data.Record.Wreckage.WreckTst, Data.Record.Wreckage.Wreck,
+  Exposed-modules: Data.Record.Wreckage.Wreck,
       Data.Record.Wreckage.TShow, Data.Record.Wreckage.ProductSort,
       Data.Record.Wreckage.Product, Data.Record.Wreckage.Nat,
       Data.Record.Wreckage.Bool, Data.Record.Wreckage.Alphabet
@@ -42,7 +42,6 @@ Library
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
   -- Build-tools:
-  Ghc-options: -F -pgmF "C:\\tools\\hpre.bat"
 
 Executable prewreck
   Build-Depends:  base >= 4 && < 5, unicode-properties >= 3.2
