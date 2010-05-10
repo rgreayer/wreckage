@@ -291,7 +291,7 @@ selToExp cs = return (ConE 'Selector `AppE` (foldr AppE (ConE '()) $ map f cs))
 selToPat :: String -> Q Pat
 selToPat _ = fail "sorry, unimplemented"
 
-m = QuasiQuoter selToExp selToPat
+selQQ = QuasiQuoter selToExp selToPat
 
 (=:) = (,)
 

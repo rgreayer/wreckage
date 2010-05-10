@@ -9,7 +9,7 @@ import Language.Haskell.TH
 
 {-
 data Rec1 = Rec1 !Int
-mkRec1 v = mk $ merge ({-sort $ -} {-tag (undefined :: Rec1)-} v) () --(defaults (undefined :: Rec1))
+mkRec1 v = mk $ merge v ()
     where mk :: (Tagged a Int :* ()) -> Rec1
           mk (Tagged i :* ()) = Rec1 i
 
@@ -22,7 +22,7 @@ instance Selection Rec1 (Selector (C119:*())) where
     type SelectorIndex Rec1 (Selector (C119:*())) = Zero
 -}
 wreck [d|data Rec1 = Rec1 {
-    w :: !Int } |] -}
+    w :: !Int,
     x :: Double,
     y :: String } deriving (Show)|]
 wreck [d|data Rec2 = Rec2 {
